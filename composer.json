@@ -1,0 +1,8 @@
+{
+    "name": "lewis/rotuing",
+    "autoload": {
+        "psr-0": {
+            "Lewis": "src/"
+        }
+    }
+}
