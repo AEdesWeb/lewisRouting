@@ -68,7 +68,10 @@ class Routing
                 throw new \Exception("path not match");
 
             $valName = str_replace("\$", "", $value);
-            $valContent = $path[$key];
+            $valContent = null;
+
+            if(isset($path[$key]))
+                $valContent = $path[$key];
 
             $returnValue = array_merge($returnValue,
                                        array($valName => $valContent));
