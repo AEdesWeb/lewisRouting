@@ -53,9 +53,16 @@ class Routing
 
     public function matchPath($path, $config)
     {
+        $returnValue = array();
+
+        if("" == $config or null == $config)
+            $config = "/";
+
+        if("/" == $config and "" == $path)
+            return $returnValue;
+
         $path = explode("/", $path);
         $config = explode("/", $config);
-        $returnValue = array();
 
         foreach ($config as $key => $value) {
             if(!isset($path[$key]))
