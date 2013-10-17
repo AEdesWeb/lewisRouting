@@ -5,10 +5,12 @@ namespace Lewis\Routing;
 class Routing
 {
     public $config;
+    public $input;
 
-    public function __construct($config)
+    public function __construct($config, $input)
     {
         $this->config = $config;
+        $this->input  = $input;
     }
 
     public function getController()
@@ -91,7 +93,7 @@ class Routing
 
         $className = "\\$team\\$bundle\\$controller";
 
-        $class = new $className();
+        $class = new $className($this->input);
 
         call_user_func_array(array($class, "setRequest"), array($this->getRequest()));
         call_user_func_array(array($class, "setUrlValue"), array($config['urlValue']));
